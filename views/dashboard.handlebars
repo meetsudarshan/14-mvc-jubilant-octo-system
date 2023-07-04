@@ -1,0 +1,18 @@
+<h2>Dashboard</h2>
+
+{{#if posts.length}}
+  {{#each posts}}
+    <div>
+      <h3>{{title}}</h3>
+      <p>{{content}}</p>
+      <a href="/update-post/{{id}}">Edit</a>
+      <form action="/delete-post/{{id}}" method="POST" style="display: inline">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No blog posts available.</p>
+{{/if}}
+
+<a href="/new-post">New Post</a>
