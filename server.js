@@ -3,14 +3,20 @@ const exphbs = require('express-handlebars');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const { Op } = require('sequelize');
-const sequelize = require('./config');
+const sequelize = require('./config/connection');
 const User = require('./models/User');
 const Post = require('./models/Post');
 const Comment = require('./models/Comment');
+const routes = require('./controllers');
+
+// Initialize models and define associations
+const models = { Post, User };
+Post(models);
+User(models);
 
 // Create Express app
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Configure Handlebars as the template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
@@ -120,14 +126,6 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-// Logout route
-app.get('/logout', (req, res) => {
-  // Destroy the session
-  req.session.destroy(() => {
-    res.redirect('/');
-  });
-});
-
 // Dashboard route
 app.get('/dashboard', async (req, res) => {
   try {
@@ -136,8 +134,8 @@ app.get('/dashboard', async (req, res) => {
       return;
     }
 
-    // Retrieve blog posts created by the current user
-    const posts = await Post.findAll({ where: { UserId: req.session.userId } });
+    // Retrieve the logged-in user's posts
+    const posts = await Post.findAll({ where: { user_id: req.session.userId }, include: User });
 
     res.render('dashboard', {
       posts,
@@ -145,23 +143,31 @@ app.get('/dashboard', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to retrieve dashboard' });
+    res.status(500).json({ error: 'Failed to retrieve user posts' });
   }
 });
 
-// Single post route
+// Logout route
+app.post('/logout', (req, res) => {
+  // Clear the session data
+  req.session.destroy(() => {
+    res.status(204).end();
+  });
+});
+
+// Post route
 app.get('/post/:id', async (req, res) => {
   try {
     const postId = req.params.id;
 
-    // Retrieve the post with comments and associated user
+    // Retrieve the blog post with its associated comments and author
     const post = await Post.findOne({
       where: { id: postId },
       include: [{ model: User }, { model: Comment, include: User }],
     });
 
     if (!post) {
-      res.status(404).json({ error: 'Post not found' });
+      res.status(404).json({ error: 'No post found with this id' });
       return;
     }
 
@@ -171,133 +177,14 @@ app.get('/post/:id', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to retrieve post' });
+    res.status(500).json({ error: 'Failed to retrieve blog post' });
   }
 });
 
-// New post route
-app.get('/new-post', (req, res) => {
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-    return;
-  }
+// API routes
+app.use('/api', routes);
 
-  res.render('new-post', {
-    loggedIn: req.session.loggedIn,
-  });
-});
-
-app.post('/new-post', async (req, res) => {
-  try {
-    if (!req.session.loggedIn) {
-      res.redirect('/login');
-      return;
-    }
-
-    const { title, content } = req.body;
-
-    // Create a new post
-    const newPost = await Post.create({ title, content, UserId: req.session.userId });
-
-    res.status(200).json({ message: 'New post created successfully', postId: newPost.id });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to create new post' });
-  }
-});
-
-// Update post route
-app.get('/update-post/:id', async (req, res) => {
-  try {
-    if (!req.session.loggedIn) {
-      res.redirect('/login');
-      return;
-    }
-
-    const postId = req.params.id;
-
-    // Retrieve the post with the provided id
-    const post = await Post.findOne({ where: { id: postId, UserId: req.session.userId } });
-
-    if (!post) {
-      res.status(404).json({ error: 'Post not found' });
-      return;
-    }
-
-    res.render('update-post', {
-      post,
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to retrieve post' });
-  }
-});
-
-app.put('/update-post/:id', async (req, res) => {
-  try {
-    if (!req.session.loggedIn) {
-      res.redirect('/login');
-      return;
-    }
-
-    const postId = req.params.id;
-    const { title, content } = req.body;
-
-    // Update the post with the provided id
-    await Post.update({ title, content }, { where: { id: postId, UserId: req.session.userId } });
-
-    res.status(200).json({ message: 'Post updated successfully' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to update post' });
-  }
-});
-
-// Delete post route
-app.delete('/delete-post/:id', async (req, res) => {
-  try {
-    if (!req.session.loggedIn) {
-      res.redirect('/login');
-      return;
-    }
-
-    const postId = req.params.id;
-
-    // Delete the post with the provided id
-    await Post.destroy({ where: { id: postId, UserId: req.session.userId } });
-
-    res.status(200).json({ message: 'Post deleted successfully' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to delete post' });
-  }
-});
-
-// Add comment route
-app.post('/comment/:postId', async (req, res) => {
-  try {
-    if (!req.session.loggedIn) {
-      res.redirect('/login');
-      return;
-    }
-
-    const postId = req.params.postId;
-    const { content } = req.body;
-
-    // Create a new comment for the post
-    await Comment.create({ content, PostId: postId, UserId: req.session.userId });
-
-    res.status(200).json({ message: 'Comment added successfully' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to add comment' });
-  }
-});
-
-// Sync Sequelize models and start the server
+// Sync Sequelize models and start the Express app
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server listening on http://localhost:${PORT}`);
-  });
+  app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
 });

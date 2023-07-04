@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS blog_db;
+CREATE DATABASE blog_db;
+
+
 -- Create the Users table
 CREATE TABLE Users (
   id INT AUTO_INCREMENT PRIMARY KEY,

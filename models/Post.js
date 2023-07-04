@@ -1,15 +1,16 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../../config');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
-const Post = sequelize.define('Post', {
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false,
+class Post extends Model {}
+
+Post.init(
+  {
+    // ... other post model attributes
   },
-  content: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-});
+  {
+    sequelize,
+    modelName: 'Post',
+  }
+);
 
 module.exports = Post;
