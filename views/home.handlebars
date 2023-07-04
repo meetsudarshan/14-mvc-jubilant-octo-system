@@ -1,0 +1,10 @@
+{{#if posts.length}}
+  {{#each posts}}
+    <div>
+      <h2>{{title}}</h2>
+      <p>Created by {{User.username}} on {{createdAt}}</p>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No blog posts available.</p>
+{{/if}}
