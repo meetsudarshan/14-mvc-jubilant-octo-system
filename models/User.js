@@ -1,16 +1,19 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../../config');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
+const Post = require('./Post');
 
-const User = sequelize.define('User', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
+class User extends Model {}
+
+User.init(
+  {
+    // ... other user model attributes
   },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
+  {
+    sequelize,
+    modelName: 'User',
+  }
+);
+
+User.hasMany(Post, { foreignKey: 'UserId' });
 
 module.exports = User;
