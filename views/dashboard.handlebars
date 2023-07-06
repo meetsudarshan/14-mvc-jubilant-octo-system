@@ -1,18 +1,27 @@
-<h2>Dashboard</h2>
+<div class="card p-3 m-4 bg-dark-subtle text-center rounded">
+  <h2>Welcome to the blog! Choose a topic to join the conversation.</h2>
+</div>
+    <hr>
+{{#each posts as |post|}}
+<a href="/comments/{{post.id}}">
 
-{{#if posts.length}}
-  {{#each posts}}
-    <div>
-      <h3>{{title}}</h3>
-      <p>{{content}}</p>
-      <a href="/update-post/{{id}}">Edit</a>
-      <form action="/delete-post/{{id}}" method="POST" style="display: inline">
-        <button type="submit">Delete</button>
-      </form>
+  <div class="card pt-3 ps-3 pe-3 m-4 rounded bg-dark-subtle ">
+    <div class="row card-header bg-dark-subtle ">
+      <div class="card-title h4 col-lg-8 text-start">
+        {{post.title}}
+      </div>
+      <div class="card-title col-lg-4 text-end">Posted by {{user.username}} on {{format_date post.date_created}}
+      </div>
     </div>
-  {{/each}}
-{{else}}
-  <p>No blog posts available.</p>
-{{/if}}
+    <div class="row card-header bg-light ">
+    <div class="card text-start col m-0 pt-3 pb-3 ">
+      {{post.content}}
+    </div>
+    </div>
+  </div>
+</a>
 
-<a href="/new-post">New Post</a>
+{{/each}}
+<br>
+<br>
+<br>

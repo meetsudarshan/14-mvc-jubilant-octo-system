@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "username": "EncasedCamel",
+    "password": "password123"
+  },
+  {
+    "id": 2,
+    "username": "ArtificalIntelliGentlemen",
+    "password": "password456"
+  },
+  {
+    "id": 3,
+    "username": "JasonFyle",
+    "password": "password789"
+  }
+]
