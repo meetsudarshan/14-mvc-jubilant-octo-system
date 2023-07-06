@@ -1,30 +1,37 @@
 {
+  "name": "mvc-tech-blog",
+  "version": "1.0.0",
+  "description": "## Description A CMS-style blog site where developers can publish their blog posts and comment on other developers’ posts. Follows the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.",
+  "main": "server.js",
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "express-handlebars": "^5.3.4",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.5",
+    "connect-session-sequelize": "^7.1.7",
+    "dotenv": "^16.1.4",
+    "express": "^4.17.1",
+    "express-handlebars": "^7.0.7",
     "express-session": "^1.17.3",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.4.4",
-    "sequelize": "^6.32.1"
+    "jquery": "^3.6.4",
+    "mysql2": "^3.3.4",
+    "popper.js": "^1.16.1",
+    "sequelize": "^6.32.0"
   },
-  "name": "14-mvc-jubilant-octo-system",
-  "description": "```md\r AS A developer who writes about tech\r I WANT a CMS-style blog site\r SO THAT I can publish articles, blog posts, and my thoughts and opinions\r ```",
-  "version": "1.0.0",
-  "main": "index.js",
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meetsudarshan/14-mvc-jubilant-octo-system.git"
+    "url": "git+https://github.com/tcunningham203/MVC-Tech-Blog.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/meetsudarshan/14-mvc-jubilant-octo-system/issues"
+    "url": "https://github.com/tcunningham203/MVC-Tech-Blog/issues"
   },
-  "homepage": "https://github.com/meetsudarshan/14-mvc-jubilant-octo-system#readme"
+  "homepage": "https://github.com/tcunningham203/MVC-Tech-Blog#readme"
 }

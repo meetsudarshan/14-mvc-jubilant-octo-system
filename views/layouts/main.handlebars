@@ -1,34 +1,47 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Tech Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC Tech Blog</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css.map" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    
 </head>
 
-<body>
-  <header>
-    <h1>Tech Blog</h1>
-    <nav>
-      {{#if loggedIn}}
-      <a href="/">Home</a>
-      <a href="/dashboard">Dashboard</a>
-      <a href="/logout">Logout</a>
-      {{else}}
-      <a href="/">Home</a>
-      <a href="/login">Login</a>
-      <a href="/signup">Sign Up</a>
-      {{/if}}
-    </nav>
-  </header>
 
-  <main>
-    {{{body}}}
-  </main>
+<body class=" mb-2 text-grey" style="background-color: #454058; color: #ffffff;">
+      {{> navbar}}
+    <main class="container container-fluid mt-2 ">
 
-  <footer>
-    <p>© 2023 Tech Blog. All rights reserved.</p>
-  </footer>
+        <div class="spinner-wrapper">
+            <div class="spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div id="page-wrapper">
+            {{{ body }}}
+        </div>
+    </main>
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+
+    {{/if}}
+  
+  
+
+       <script src="/js/jquery.js" type="module"></script>
+    <script src="/js/umd/popper.min.js"></script>
+
+    <script src="/js/bootstrap.bundle.min.js" defer type="module"></script>
+ 
+    <script src="/js/waitforload.js"></script>
+  {{> footer}}
 </body>
 
 </html>

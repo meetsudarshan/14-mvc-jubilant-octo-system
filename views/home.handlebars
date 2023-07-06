@@ -1,10 +1,24 @@
-{{#if posts.length}}
-  {{#each posts}}
-    <div>
-      <h2>{{title}}</h2>
-      <p>Created by {{User.username}} on {{createdAt}}</p>
-    </div>
+<div id="page-card" class="card text-center m-4 shadow rounded">
+  <div class="card-body">
+    My Blog Post
+  </div>
+</div>
+
+
+<div class="container-fluid green-container py-2">
+
+  {{#each posts as |post|}}
+    <a href="/comments/{{post.id}}">
+      <div id="post-card" class="card m-4 border-4">
+        <div id="pc-title" class="card-title px-3">
+          {{post.title}} 
+          <span>Posted by {{user.username}} on {{format_date post.date_created}}</span>
+        </div>
+        <div class="card-body">
+          {{post.content}}
+        </div>
+      </div>
+    </a>
   {{/each}}
-{{else}}
-  <p>No blog posts available.</p>
-{{/if}}
+
+</div>

@@ -1,0 +1,46 @@
+<div class="card p-3 m-4 rounded bg-dark-subtle ">
+  <div class="row card-header bg-dark-subtle ">
+    <div class="card-title h3 col-lg-8 text-start">
+      {{title}}
+    </div>
+    <div class="card-title col-lg-4 text-end">Posted by {{user.username}} on {{format_date date_created}}
+    </div>
+  </div>
+  <div class="row card-header bg-light ">
+    <div class="card text-start col m-0 pt-3 pb-3 ">
+      {{content}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 mt-2 " style="display: flex;justify-content: space-evenly; flex-direction: row;">
+      <a href="/add-comment/{{id}}" class="btn btn-outline-dark col-9 mt-2 " type="button">Add Comment</a>
+    </div>
+    <div class="col-6 mt-2 " style="display: flex;justify-content: space-evenly; flex-direction: row;">
+      <a href="/" class="btn btn-outline-dark col-9 mt-2 ">Go Back</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="card p-3 m-4 rounded bg-dark-subtle ">
+  <div class="row card-header bg-dark-subtle ">
+    <div class="card-title h5 col-lg-8 text-start">
+      Here's what others have to say...
+    </div>
+
+  </div>
+  <br>
+  {{#each comments as |comment|}}
+
+
+  <div class="row  card ">
+    <div class=" text-start col m-0 p-3">
+      {{comment.comment}}
+    </div>
+    <div class="card-title text-end p-1">{{user.username}} | {{format_date comment.date_created}}
+    </div>
+  </div>
+  <br>
+  {{/each}}
+</div>
