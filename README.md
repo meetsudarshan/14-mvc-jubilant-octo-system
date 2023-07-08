@@ -1,5 +1,8 @@
 # 14-mvc-jubilant-octo-system
 
+## Description
+A CMS-style blog site where developers can publish their blog posts and comment on other developers’ posts. Follows the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
+
 ## User Story
 
 ```md
@@ -45,3 +48,7 @@ THEN I am signed out of the site
 WHEN I am idle on the site for more than a set time
 THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
 ```
+
+## Link
+
+This application is deployed on Heroku. 

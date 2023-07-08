@@ -1,17 +1,17 @@
 [
     {
-      "title": "What's your opinion on the latest NYT best seller?",
-      "content": "I just finished reading the book and I'm blown away! The story is captivating and the writing style is brilliant. Can't wait to discuss it with others.",
+      "title": "Discussing the Latest Features of Node.js",
+      "content": "I've been exploring the new features introduced in Node.js and I'm impressed with the improvements in performance and scalability. Let's share our experiences and insights!",
       "user_id": 1
     },
     {
-      "title": "Let's talk about the buzzworthy book everyone is raving about!",
-      "content": "Have you read the latest NYT best seller? It's creating a lot of buzz and I'm curious to hear what everyone thinks. Share your thoughts!",
+      "title": "Exploring the Power of React.js for Front-end Development",
+      "content": "React.js has revolutionized front-end development with its component-based architecture and virtual DOM. Share your thoughts and experiences working with React.js!",
       "user_id": 2
     },
     {
-      "title": "Join me in exploring the pages of this NYT best seller!",
-      "content": "Calling all book enthusiasts! I've started reading the latest NYT best seller, and I'm already hooked. Let's dive into the story together and exchange our insights.",
+      "title": "Building Full-Stack Applications with the MERN Stack",
+      "content": "The MERN (MongoDB, Express.js, React.js, Node.js) stack offers a comprehensive solution for building full-stack web applications. Let's discuss the benefits and challenges of using this stack!",
       "user_id": 3
     }
   ]
