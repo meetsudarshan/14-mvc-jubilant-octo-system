@@ -1,21 +1,23 @@
 <div id="page-card" class="card text-center m-4 shadow rounded">
-  <div class="card-body">
-    My Blog Post
+  <div class="card-body" style="font-size: 24px;">
+    <img src="../images/before.jpg" alt="Before Image" style="max-width: 3em; max-height: 3em;">
+    My Angsty Web Journals from the 90s.
+    <img src="../images/after.jpg" alt="After Image" style="max-width: 3em; max-height: 3em;">
   </div>
 </div>
-
 
 <div class="container-fluid green-container py-2">
 
   {{#each posts as |post|}}
     <a href="/comments/{{post.id}}">
-      <div id="post-card" class="card m-4 border-4">
+      <div id="post-card" class="card m-1 border-1" style="width: 80rem;">
         <div id="pc-title" class="card-title px-3">
-          {{post.title}} 
-          <span>Posted by {{user.username}} on {{format_date post.date_created}}</span>
+          <h4>{{post.title}}</h4>
+          <p>Posted by {{user.username}}</p>
+          <p>Posted on {{format_date post.date_created}}</p>
         </div>
         <div class="card-body">
-          {{post.content}}
+          <p class="card-text">{{post.content}}</p>
         </div>
       </div>
     </a>
