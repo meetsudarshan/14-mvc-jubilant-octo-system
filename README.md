@@ -51,4 +51,12 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 
 ## Link
 
-This application is deployed on Heroku. 
+This application is deployed on Heroku.  My Tech Blog (hidden-stream-46775-35da09ce51ae.herokuapp.com)
+
+## How To Run
+Perform npm i
+open db folder in your gitbash terminal and execute this command mysql -u <> -p <> where you have to enter your user name and password
+then perform source schema.sql
+then exit from your sql and do node seeds/seed.sql 
+then perform npm start and it will load in localhost:3001
+
