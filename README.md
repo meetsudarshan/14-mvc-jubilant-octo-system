@@ -51,7 +51,7 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 
 ## Link
 
-This application is deployed on Heroku.  My Tech Blog (hidden-stream-46775-35da09ce51ae.herokuapp.com)
+This application is deployed on Heroku.  [My Tech Blog ( hidden-stream-46775-35da09ce51ae.herokuapp.com )](https://hidden-stream-46775-35da09ce51ae.herokuapp.com/)
 
 ## How To Run
 ```md
