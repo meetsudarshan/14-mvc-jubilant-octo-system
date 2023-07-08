@@ -1,46 +1,50 @@
-<div class="card p-3 m-4 rounded bg-dark-subtle ">
-  <div class="row card-header bg-dark-subtle ">
+<div class="card p-3 m-4 rounded bg-dark-subtle">
+  <div class="row card-header bg-dark-subtle">
     <div class="card-title h3 col-lg-8 text-start">
-      {{title}}
+      {{title}} <!-- Display the title of the post -->
     </div>
-    <div class="card-title col-lg-4 text-end">Posted by {{user.username}} on {{format_date date_created}}
+    <div class="card-title col-lg-4 text-end">
+      <span class="text-primary fw-bold">Posted by {{user.username}} on {{format_date date_created}}</span>
+      <!-- Display the username and date of the post with blue color and bold font -->
     </div>
   </div>
-  <div class="row card-header bg-light ">
-    <div class="card text-start col m-0 pt-3 pb-3 ">
-      {{content}}
+  <div class="row card-header bg-light">
+    <div class="card text-start col m-0 pt-3 pb-3">
+      {{content}} <!-- Display the content of the post -->
     </div>
   </div>
 
   <div class="row">
-    <div class="col-6 mt-2 " style="display: flex;justify-content: space-evenly; flex-direction: row;">
-      <a href="/add-comment/{{id}}" class="btn btn-outline-dark col-9 mt-2 " type="button">Add Comment</a>
+    <div class="col-6 mt-2" style="display: flex; justify-content: space-evenly; flex-direction: row;">
+      <a href="/add-comment/{{id}}" class="btn btn-outline-dark col-9 mt-2" type="button">Add Comment</a>
+      <!-- Button to add a comment, linked to the corresponding post ID -->
     </div>
-    <div class="col-6 mt-2 " style="display: flex;justify-content: space-evenly; flex-direction: row;">
-      <a href="/" class="btn btn-outline-dark col-9 mt-2 ">Go Back</a>
+    <div class="col-6 mt-2" style="display: flex; justify-content: space-evenly; flex-direction: row;">
+      <a href="/" class="btn btn-outline-dark col-9 mt-2">Go Back</a>
+      <!-- Button to go back to the previous page -->
     </div>
   </div>
-
 </div>
 
-<div class="card p-3 m-4 rounded bg-dark-subtle ">
-  <div class="row card-header bg-dark-subtle ">
+<div class="card p-3 m-4 rounded bg-dark-subtle">
+  <div class="row card-header bg-dark-subtle">
     <div class="card-title h5 col-lg-8 text-start">
-      Here's what others have to say...
+      Your voice matters!!!
+      <!-- Header for the comments section -->
     </div>
-
   </div>
   <br>
   {{#each comments as |comment|}}
-
-
-  <div class="row  card ">
-    <div class=" text-start col m-0 p-3">
-      {{comment.comment}}
+    <div class="row card">
+      <div class="text-start col m-0 p-3">
+        <span class="text-primary h4 fw-bold">{{comment.user.username}}</span> | <span class="text-primary h4 fw-bold">{{format_date comment.date_created}}</span>
+        <!-- Display the username and date of each comment with blue color and bold font -->
+      </div>
+      <div class="card-title text-end p-1">
+        <p class="h5 fw-bold">{{comment.comment}}</p>
+        <!-- Display the comment in bold font -->
+      </div>
     </div>
-    <div class="card-title text-end p-1">{{user.username}} | {{format_date comment.date_created}}
-    </div>
-  </div>
-  <br>
+    <br>
   {{/each}}
 </div>

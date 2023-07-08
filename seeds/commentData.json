@@ -1,31 +1,31 @@
 [
     {
-      "comment": "This book is absolutely thrilling! The suspense kept me hooked from start to finish.",
+      "comment": "This programming language Javascript offers excellent performance and has a strong ecosystem of libraries and frameworks.",
       "user_id": 2,
       "post_id": 1
     },
     {
-      "comment": "The characters in this book are so well-written and relatable. I couldn't help but get emotionally invested in their stories.",
+      "comment": "I find COBOL to be highly expressive and efficient in terms of code readability and development speed.",
       "user_id": 3,
       "post_id": 1
     },
     {
-      "comment": "The plot of this book is full of unexpected twists and turns. I was constantly guessing what would happen next.",
+      "comment": "The latest update in Blackduck hum remediation introduces powerful features that enhance productivity and code maintainability.",
       "user_id": 1,
       "post_id": 2
     },
     {
-      "comment": "I was deeply moved by the emotional depth of this book. It made me laugh and cry, and left a lasting impact on me.",
+      "comment": "I encountered some challenges while working with Mainframe, but the extensive documentation and active community provided great support.",
       "user_id": 3,
       "post_id": 2
     },
     {
-      "comment": "I can't recommend this book enough! The writing style is beautiful, and the themes explored are thought-provoking.",
+      "comment": "The integration of DB2 database with Microsoft database called Access Database with other tools and frameworks makes it an excellent choice for building scalable and robust software.",
       "user_id": 1,
       "post_id": 3
     },
     {
-      "comment": "The world-building in this book is phenomenal. I felt like I was transported to another universe.",
+      "comment": "I appreciate the simplicity and elegance of VBScript's syntax, making it easier to write clean and concise code.",
       "user_id": 2,
       "post_id": 3
     }

@@ -1,5 +1,5 @@
 {
-  "name": "mvc-tech-blog",
+  "name": "my angsty web journals from the 90s",
   "version": "1.0.0",
   "description": "## Description A CMS-style blog site where developers can publish their blog posts and comment on other developers’ posts. Follows the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.",
   "main": "server.js",
@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/meetsudarshan/14-mvc-jubilant-octo-system"
   },
-  "author": "",
+  "author": "Sudarshan Samaddar",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/meetsudarshan/14-mvc-jubilant-octo-system"
   },
-  "homepage": ""
+  "homepage": "https://github.com/meetsudarshan"
 }
