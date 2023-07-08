@@ -1,46 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVC Tech Blog</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstrap.min.css.map" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tech Blog</title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap.min.css.map" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
+<body class="mb-2 text-grey" style="background-color: #454058; color: #ffffff;">
+ {{> navbar}}
+  <main class="container container-fluid mt-2">
+    <div class="spinner-wrapper">
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div id="page-wrapper">
+      {{{ body }}}
+    </div>
+  </main>
 
-<body class=" mb-2 text-grey" style="background-color: #454058; color: #ffffff;">
-      {{> navbar}}
-    <main class="container container-fluid mt-2 ">
+  {{#if userLoggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 
-        <div class="spinner-wrapper">
-            <div class="spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <div id="page-wrapper">
-            {{{ body }}}
-        </div>
-    </main>
-    {{#if logged_in}}
-    <script src="/js/logout.js"></script>
-
-    {{/if}}
-  
-  
-
-       <script src="/js/jquery.js" type="module"></script>
-    <script src="/js/umd/popper.min.js"></script>
-
-    <script src="/js/bootstrap.bundle.min.js" defer type="module"></script>
- 
-    <script src="/js/waitforload.js"></script>
+  <script src="/js/jquery.js" type="module"></script>
+  <script src="/js/umd/popper.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js" defer type="module"></script>
+  <script src="/js/loadTime.js"></script>
   {{> footer}}
 </body>
 

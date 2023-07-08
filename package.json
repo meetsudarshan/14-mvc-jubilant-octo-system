@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tcunningham203/MVC-Tech-Blog.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tcunningham203/MVC-Tech-Blog/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/tcunningham203/MVC-Tech-Blog#readme"
+  "homepage": ""
 }

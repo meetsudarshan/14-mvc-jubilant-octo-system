@@ -1,27 +1,70 @@
 <div class="card p-3 m-4 bg-dark-subtle text-center rounded">
-  <h2>Welcome to the blog! Choose a topic to join the conversation.</h2>
+  <h2>Welcome to the blog! Choose a book category to join the conversation.</h2>
+  <form class="category-form">
+    <div class="form-group">
+      <select class="form-control" id="book-category">
+        <option value="">All Categories</option>
+        <option value="fiction">Fiction</option>
+        <option value="non-fiction">Non-Fiction</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="mystery">Mystery</option>
+        <option value="romance">Romance</option>
+        <!-- Add more categories as needed -->
+      </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Select Category</button>
+  </form>
 </div>
-    <hr>
+
+<hr>
+
 {{#each posts as |post|}}
-<a href="/comments/{{post.id}}">
-
-  <div class="card pt-3 ps-3 pe-3 m-4 rounded bg-dark-subtle ">
-    <div class="row card-header bg-dark-subtle ">
-      <div class="card-title h4 col-lg-8 text-start">
-        {{post.title}}
+  {{!-- Check if the selected category matches the post's category --}}
+  {{#if (or (not category) (isEqual category post.category))}}
+    <a href="/comments/{{post.id}}">
+      <div class="card pt-3 ps-3 pe-3 m-4 rounded bg-dark-subtle ">
+        <div class="row card-header bg-dark-subtle ">
+          <div class="card-title h4 col-lg-8 text-start">
+            {{post.title}}
+          </div>
+          <div class="card-title col-lg-4 text-end">Posted by {{user.username}} on {{format_date post.date_created}}
+          </div>
+        </div>
+        <div class="row card-header bg-light ">
+          <div class="card text-start col m-0 pt-3 pb-3 ">
+            {{post.content}}
+          </div>
+        </div>
       </div>
-      <div class="card-title col-lg-4 text-end">Posted by {{user.username}} on {{format_date post.date_created}}
-      </div>
+    </a>
+    <div class="card m-3 p-3" id="comment-section-{{post.id}}">
+      <form class="form comment-form">
+        <div class="form-group">
+          <textarea type="text" class="form-control" rows="5" placeholder="Add your thoughts..." id="thoughts-{{post.id}}"></textarea>
+        </div>
+        <button class="btn btn-outline-dark" type="submit" data-post-id="{{post.id}}">Submit</button>
+      </form>
     </div>
-    <div class="row card-header bg-light ">
-    <div class="card text-start col m-0 pt-3 pb-3 ">
-      {{post.content}}
-    </div>
-    </div>
-  </div>
-</a>
-
+  {{/if}}
 {{/each}}
 <br>
 <br>
 <br>
+
+<script>
+  // JavaScript code to handle book title click event
+  const bookTitles = document.querySelectorAll('.card-title.h4');
+  const commentSections = document.querySelectorAll('.card.m-3.p-3');
+
+  bookTitles.forEach((title, index) => {
+    title.addEventListener('click', () => {
+      commentSections.forEach((section, sectionIndex) => {
+        if (index === sectionIndex) {
+          section.style.display = 'block';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
